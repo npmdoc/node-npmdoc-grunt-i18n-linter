@@ -1,1 +1,39 @@
-{     "devDependencies": {         "grunt-i18n-linter": "*",         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmdoc-grunt-i18n-linter",     "homepage": "https://github.com/npmdoc/node-npmdoc-grunt-i18n-linter",     "repository": {         "type": "git",         "url": "https://github.com/npmdoc/node-npmdoc-grunt-i18n-linter.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "api documentation for [grunt-i18n-linter (v0.0.3)](https://github.com/tictrac/grunt-i18n-linter) [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-i18n-linter.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-i18n-linter) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "grunt-i18n-linter": "*",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmdoc/node-npmdoc-grunt-i18n-linter",
+    "keywords": [
+        "documentation",
+        "grunt-i18n-linter"
+    ],
+    "license": "MIT",
+    "main": "lib.npmdoc_grunt_i18n_linter.js",
+    "name": "npmdoc-grunt-i18n-linter",
+    "nameAlias": "npmdoc_grunt_i18n_linter",
+    "nameOriginal": "npmdoc-grunt-i18n-linter",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmdoc/node-npmdoc-grunt-i18n-linter.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "(set -e; npm install \"kaizhu256/node-utility2#alpha\"; utility2 shDeployHeroku)",
+        "postinstall": "if [ -f npm_scripts.sh ]; then ./npm_scripts.sh postinstall; fi",
+        "start": "(set -e; export PORT=${PORT:-8080}; utility2 start test.js)",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "0.0.1"
+}
