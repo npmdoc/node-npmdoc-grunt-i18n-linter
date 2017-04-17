@@ -1,0 +1,422 @@
+<div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a
+
+        href="https://github.com/tictrac/grunt-i18n-linter"
+
+    >grunt-i18n-linter (v0.0.3)</a>
+</h1>
+<h4>Grunt plugin to highlight unused or missing translations</h4>
+<div class="apidocSectionDiv"><a
+    href="#apidoc.tableOfContents"
+    id="apidoc.tableOfContents"
+><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-i18n-linter">module grunt-i18n-linter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-i18n-linter.Gruntfile">
+            function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>Gruntfile
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-i18n-linter.i18n_linter">
+            function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>i18n_linter
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-i18n-linter.Gruntfile">module grunt-i18n-linter.Gruntfile</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-i18n-linter.Gruntfile.Gruntfile">
+            function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>Gruntfile
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.grunt-i18n-linter.i18n_linter">module grunt-i18n-linter.i18n_linter</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.grunt-i18n-linter.i18n_linter.i18n_linter">
+            function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>i18n_linter
+            <span class="apidocSignatureSpan">(grunt)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-i18n-linter" id="apidoc.module.grunt-i18n-linter">module grunt-i18n-linter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-i18n-linter.Gruntfile" id="apidoc.element.grunt-i18n-linter.Gruntfile">
+        function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>Gruntfile
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Gruntfile = function (grunt) {
+
+    // Project configuration.
+    grunt.initConfig({
+        jshint: {
+            all: [
+                &#x27;Gruntfile.js&#x27;,
+                &#x27;tasks/*.js&#x27;,
+                &#x27;&#x3c;%= nodeunit.tests %&#x3e;&#x27;
+            ],
+            options: {
+                jshintrc: &#x27;.jshintrc&#x27;
+            }
+        },
+
+        // Before generating any new files, remove any previously-created files.
+        clean: {
+            tests: [&#x27;tmp&#x27;]
+        },
+
+        // Configuration to be run (and then tested).
+        i18n_linter: {
+            test_combined: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/*.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_all: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/all.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missing: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missingNoMissing: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing.json&#x27;]
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_unused: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/unused.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missingAndUnused: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing-unused.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            }
+        },
+
+        // Unit tests.
+        nodeunit: {
+            tests: [&#x27;test/*_test.js&#x27;]
+        }
+    });
+
+    // Actually load this plugin&#x27;s task(s).
+    grunt.loadTasks(&#x27;tasks&#x27;);
+
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks(&#x27;grunt-contrib-jshint&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-clean&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-nodeunit&#x27;);
+
+    // Whenever the &#x22;test&#x22; task is run, first clean the &#x22;tmp&#x22; dir, then run this
+    // plugin&#x27;s task(s), then test the result.
+    grunt.registerTask(&#x27;test&#x27;, [&#x27;clean&#x27;, &#x27;i18n_linter&#x27;, &#x27;nodeunit&#x27;]);
+
+    // By default, lint and run all tests.
+    grunt.registerTask(&#x27;default&#x27;, [&#x27;jshint&#x27;, &#x27;test&#x27;]);
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-i18n-linter.i18n_linter" id="apidoc.element.grunt-i18n-linter.i18n_linter">
+        function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>i18n_linter
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">i18n_linter = function (grunt) {
+
+    grunt.registerMultiTask(&#x27;i18n_linter&#x27;, &#x27;Grunt plugin to highlight unused or missing translations&#x27;, function() {
+        var linter = require(&#x27;./lib/i18n_linter&#x27;)(grunt),
+            options = this.options({
+                translations: [],
+                missingTranslationRegex: null
+            });
+
+        // Run
+        linter.run(this.filesSrc, options);
+
+        // Report
+        report(linter.getUnusedTranslations(), &#x27;Unused&#x27;);
+        if (options.missingTranslationRegex !== null) {
+            report(linter.getMissingTranslations(), &#x27;Missing&#x27;);
+        }
+
+<span class="apidocCodeCommentSpan">        /**
+         * Report the status of items
+         * @param {Array} items If empty its successful
+         * @param {String} success Success message
+         * @param {String} error Error message
+         */
+</span>        function report(items, heading) {
+            grunt.log.subhead(heading);
+            if (items.length &#x3e; 0) {
+                grunt.log.error(grunt.log.wordlist(items, {separator: &#x27;\n&#x27;}));
+            } else {
+                grunt.log.ok();
+            }
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-i18n-linter.Gruntfile" id="apidoc.module.grunt-i18n-linter.Gruntfile">module grunt-i18n-linter.Gruntfile</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-i18n-linter.Gruntfile.Gruntfile" id="apidoc.element.grunt-i18n-linter.Gruntfile.Gruntfile">
+        function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>Gruntfile
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">Gruntfile = function (grunt) {
+
+    // Project configuration.
+    grunt.initConfig({
+        jshint: {
+            all: [
+                &#x27;Gruntfile.js&#x27;,
+                &#x27;tasks/*.js&#x27;,
+                &#x27;&#x3c;%= nodeunit.tests %&#x3e;&#x27;
+            ],
+            options: {
+                jshintrc: &#x27;.jshintrc&#x27;
+            }
+        },
+
+        // Before generating any new files, remove any previously-created files.
+        clean: {
+            tests: [&#x27;tmp&#x27;]
+        },
+
+        // Configuration to be run (and then tested).
+        i18n_linter: {
+            test_combined: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/*.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_all: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/all.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missing: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missingNoMissing: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing.json&#x27;]
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_unused: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/unused.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            },
+            test_missingAndUnused: {
+                options: {
+                    translations: [&#x27;test/fixtures/translations/missing-unused.json&#x27;],
+                    missingTranslationRegex: /__[A-Z0-9_]*__/g
+                },
+                src: [&#x27;test/fixtures/templates/*&#x27;]
+            }
+        },
+
+        // Unit tests.
+        nodeunit: {
+            tests: [&#x27;test/*_test.js&#x27;]
+        }
+    });
+
+    // Actually load this plugin&#x27;s task(s).
+    grunt.loadTasks(&#x27;tasks&#x27;);
+
+    // These plugins provide necessary tasks.
+    grunt.loadNpmTasks(&#x27;grunt-contrib-jshint&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-clean&#x27;);
+    grunt.loadNpmTasks(&#x27;grunt-contrib-nodeunit&#x27;);
+
+    // Whenever the &#x22;test&#x22; task is run, first clean the &#x22;tmp&#x22; dir, then run this
+    // plugin&#x27;s task(s), then test the result.
+    grunt.registerTask(&#x27;test&#x27;, [&#x27;clean&#x27;, &#x27;i18n_linter&#x27;, &#x27;nodeunit&#x27;]);
+
+    // By default, lint and run all tests.
+    grunt.registerTask(&#x27;default&#x27;, [&#x27;jshint&#x27;, &#x27;test&#x27;]);
+
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.grunt-i18n-linter.i18n_linter" id="apidoc.module.grunt-i18n-linter.i18n_linter">module grunt-i18n-linter.i18n_linter</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.grunt-i18n-linter.i18n_linter.i18n_linter" id="apidoc.element.grunt-i18n-linter.i18n_linter.i18n_linter">
+        function <span class="apidocSignatureSpan">grunt-i18n-linter.</span>i18n_linter
+        <span class="apidocSignatureSpan">(grunt)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">i18n_linter = function (grunt) {
+
+    grunt.registerMultiTask(&#x27;i18n_linter&#x27;, &#x27;Grunt plugin to highlight unused or missing translations&#x27;, function() {
+        var linter = require(&#x27;./lib/i18n_linter&#x27;)(grunt),
+            options = this.options({
+                translations: [],
+                missingTranslationRegex: null
+            });
+
+        // Run
+        linter.run(this.filesSrc, options);
+
+        // Report
+        report(linter.getUnusedTranslations(), &#x27;Unused&#x27;);
+        if (options.missingTranslationRegex !== null) {
+            report(linter.getMissingTranslations(), &#x27;Missing&#x27;);
+        }
+
+<span class="apidocCodeCommentSpan">        /**
+         * Report the status of items
+         * @param {Array} items If empty its successful
+         * @param {String} success Success message
+         * @param {String} error Error message
+         */
+</span>        function report(items, heading) {
+            grunt.log.subhead(heading);
+            if (items.length &#x3e; 0) {
+                grunt.log.error(grunt.log.wordlist(items, {separator: &#x27;\n&#x27;}));
+            } else {
+                grunt.log.ok();
+            }
+        }
+    });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
