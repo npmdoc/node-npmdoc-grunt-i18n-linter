@@ -1,4 +1,7 @@
-# api documentation for  [grunt-i18n-linter (v0.0.3)](https://github.com/tictrac/grunt-i18n-linter)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-i18n-linter.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-i18n-linter) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter)
+# npmdoc-grunt-i18n-linter
+
+#### basic api documentation for  [grunt-i18n-linter (v0.0.3)](https://github.com/tictrac/grunt-i18n-linter)  [![npm package](https://img.shields.io/npm/v/npmdoc-grunt-i18n-linter.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-grunt-i18n-linter) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter.svg)](https://travis-ci.org/npmdoc/node-npmdoc-grunt-i18n-linter)
+
 #### Grunt plugin to highlight unused or missing translations
 
 [![NPM](https://nodei.co/npm/grunt-i18n-linter.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/grunt-i18n-linter)
@@ -69,7 +72,8 @@
     "scripts": {
         "test": "grunt test"
     },
-    "version": "0.0.3"
+    "version": "0.0.3",
+    "bin": {}
 }
 ```
 
